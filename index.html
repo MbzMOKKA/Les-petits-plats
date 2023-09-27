@@ -3,20 +3,95 @@
     <head>
         <meta charset="UTF-8" />
         <title>Les petits plats</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
-                theme: { fontFamily: { Anton: ["Anton"] } },
+                theme: {
+                    screens: { "2xl": "1441px" },
+                    fontFamily: { Anton: ["Anton"] },
+                    extend: {
+                        width: {
+                            13: "52px",
+                        },
+                        height: {
+                            13: "52px",
+                        },
+                        colors: {
+                            "brand-gray": "#EDEDED",
+                            "brand-dkgray": "#7A7A7A",
+                            "brand-black": "#1B1B1B",
+                            "brand-yellow": "#FFD15B",
+                        },
+                    },
+                },
             };
         </script>
         <style type="text/tailwindcss">
+            @layer base {
+                * {
+                    font-family: "Manrope", monospace;
+                    padding: 0;
+                    margin: 0;
+                    box-sizing: border-box;
+                }
+                h1 {
+                    text-transform: uppercase;
+                    font-family: Anton;
+                    font-size: 44px;
+                }
+            }
             @layer utilities {
             }
         </style>
     </head>
-    <body>
-        <header>
-            <h1 class="text-red-700 text-6xl">Simple Website</h1>
+    <body class="w-full max-w-screen-2xl bg-brand-ltgray m-auto 2xl:mt-8">
+        <header class="relative">
+            <img
+                src="./images/misc/header_banner.png"
+                alt="Bannière du site"
+                class="w-full 2xl:rounded-3xl"
+            />
+            <img
+                src="./images/logo/logo.svg"
+                alt="Logo du site"
+                class="absolute w-52 left-16 top-14 right-0 bottom-0"
+            />
+            <div
+                class="absolute left-0 top-0 right-0 bottom-0 flex flex-col justify-center items-center"
+            >
+                <h1 class="text-brand-yellow text-center w-1/2 mb-8">
+                    Cherchez parmi plus de 1500 recettes du quotidien, simples
+                    et délicieuses
+                </h1>
+                <div
+                    class="bg-white w-2/3 px-2.5 py-2.5 flex flex-row rounded-xl"
+                >
+                    <input
+                        type="search"
+                        class="text-brand-dkgray grow mx-1 px-2 text-base"
+                        placeholder="Rechercher une recette, un ingrédient, ..."
+                    />
+                    <button
+                        class="bg-brand-black w-13 h-13 rounded-lg hover:bg-brand-yellow"
+                    >
+                        <img
+                            src="./images/icon/search.svg"
+                            alt="Chercher"
+                            class="m-auto w-7 h-7"
+                        />
+                    </button>
+                </div>
+            </div>
         </header>
         <main>
             <h2>Welcome to our website</h2>
@@ -25,9 +100,5 @@
             </p>
             <img src="https://via.placeholder.com/150" alt="Example Image" />
         </main>
-
-        <footer>
-            <p>Copyright &copy; 2023 Simple Website</p>
-        </footer>
     </body>
 </html>
