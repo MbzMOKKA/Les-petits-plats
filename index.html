@@ -18,19 +18,20 @@
             tailwind.config = {
                 theme: {
                     screens: { "2xl": "1441px" },
-                    fontFamily: { Anton: ["Anton"] },
+                    fontFamily: { anton: ["Anton"] },
                     extend: {
-                        width: {
-                            13: "52px",
-                        },
-                        height: {
+                        spacing: {
                             13: "52px",
                         },
                         colors: {
+                            "brand-ltgray": "#C6C6C6",
                             "brand-gray": "#EDEDED",
                             "brand-dkgray": "#7A7A7A",
                             "brand-black": "#1B1B1B",
                             "brand-yellow": "#FFD15B",
+                        },
+                        boxShadow: {
+                            card: "0px 4px 34px 30px rgba(0, 0, 0, 0.04);",
                         },
                     },
                 },
@@ -49,12 +50,42 @@
                     font-family: Anton;
                     font-size: 44px;
                 }
+                .filter {
+                    position: relative;
+                    margin-right: 66px;
+                }
+                .filter button {
+                    background-color: white;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 16px;
+                    border-radius: 11px;
+                }
+                .filter button:hover {
+                    cursor: pointer;
+                    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+                        0 8px 10px -6px rgb(0 0 0 / 0.1);
+                }
+                .filter button p {
+                    color: #1b1b1b;
+                    font-size: 16px;
+                    font-weight: 500;
+                    margin-right: 63px;
+                }
+                .filter[expanded="true"] button {
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
             }
             @layer utilities {
             }
         </style>
     </head>
-    <body class="w-full max-w-screen-2xl bg-brand-ltgray m-auto 2xl:mt-8">
+    <body
+        class="w-full max-w-screen-2xl bg-brand-gray m-auto pb-40 overflow-y-scroll 2xl:mt-8"
+    >
+        <!-- HEADER -->
         <header class="relative">
             <img
                 src="./images/misc/header_banner.png"
@@ -73,6 +104,7 @@
                     Cherchez parmi plus de 1500 recettes du quotidien, simples
                     et délicieuses
                 </h1>
+                <!-- SEARCH BAR -->
                 <div
                     class="bg-white w-2/3 px-2.5 py-2.5 flex flex-row rounded-xl"
                 >
@@ -86,19 +118,163 @@
                     >
                         <img
                             src="./images/icon/search.svg"
-                            alt="Chercher"
+                            alt="Icône"
                             class="m-auto w-7 h-7"
                         />
                     </button>
                 </div>
             </div>
         </header>
-        <main>
-            <h2>Welcome to our website</h2>
-            <p>
-                This is a simple example of a website built with HTML and CSS.
-            </p>
-            <img src="https://via.placeholder.com/150" alt="Example Image" />
+        <!-- MAIN -->
+        <main class="mx-24 mt-5">
+            <!-- FILTERING -->
+            <div class="flex flex-col">
+                <div class="flex flex-row justify-between items-center">
+                    <!-- BUTTONS -->
+                    <div class="flex flex-row items-center">
+                        <div class="filter" expanded="false">
+                            <button>
+                                <p>Ingrédients</p>
+                                <img
+                                    src="./images/icon/chevron-down.svg"
+                                    alt="Icône"
+                                />
+                            </button>
+                        </div>
+                        <div class="filter" expanded="false">
+                            <button>
+                                <p>Appareils</p>
+                                <img
+                                    src="./images/icon/chevron-down.svg"
+                                    alt="Icône"
+                                />
+                            </button>
+                            <!-- EXPANSION HERE -->
+                        </div>
+                        <div class="filter" expanded="false">
+                            <button>
+                                <p>Ustensiles</p>
+                                <img
+                                    src="./images/icon/chevron-down.svg"
+                                    alt="Icône"
+                                />
+                            </button>
+                        </div>
+                    </div>
+                    <!-- RESULT COUNT -->
+                    <p class="text-brand-black font-anton text-xl">
+                        1500 recettes
+                    </p>
+                </div>
+                <!-- FILTERS APPLIED -->
+                <ul class="flex flex-row list-none mt-5 mb-10">
+                    <li class="mr-6">
+                        <button
+                            class="flex flex-row justify-between items-center bg-brand-yellow text-sm rounded-xl p-4 hover:shadow-xl"
+                        >
+                            Crème de coco
+                            <img
+                                src="./images/icon/cross.svg"
+                                alt="Icône"
+                                class="ml-8"
+                            />
+                        </button>
+                    </li>
+                    <li class="mr-6">
+                        <button
+                            class="flex flex-row justify-between items-center bg-brand-yellow text-sm rounded-xl p-4 hover:shadow-xl"
+                        >
+                            Crème de coco
+                            <img
+                                src="./images/icon/cross.svg"
+                                alt="Icône"
+                                class="ml-8"
+                            />
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <!-- RESULTS -->
+            <ul
+                class="grid justify-center grid-cols-[repeat(auto-fill,380px)] gap-x-12 gap-y-16"
+            >
+                <!-- CARD -->
+                <li class="shadow-card rounded-[20px] overflow-hidden">
+                    <div class="relative">
+                        <img
+                            src="./images/thumbnail/Recette01.jpg"
+                            alt="Example Image"
+                            loading="lazy"
+                            class="w-full h-[253px] object-cover"
+                        />
+                        <p
+                            class="absolute right-[22px] top-[21px] bg-brand-yellow rounded-full px-[15px] py-[5px] text-xs text-brand-black"
+                        >
+                            10min
+                        </p>
+                    </div>
+                    <div class="pt-[32px] px-[25px] pb-[60px]">
+                        <h2 class="text-lg font-anton mb-[28px]">
+                            Limonade de Coco
+                        </h2>
+                        <div class="mb-[35px]">
+                            <h3
+                                class="mb-[15px] text-brand-dkgray text-xs uppercase font-bold tracking-[1.08px]"
+                            >
+                                Recette
+                            </h3>
+                            <p class="text-brand-black text-sm">
+                                Mettre les glaçons à votre goût dans le blender,
+                                Ajouter le lait la crème de coco, le jus de 2
+                                citrons et le sucre ensemble. Mixer jusqu'à
+                                obtenir la consistance désirée.
+                            </p>
+                        </div>
+                        <div>
+                            <h3
+                                class="mb-[15px] text-brand-dkgray text-xs uppercase font-bold tracking-[1.08px]"
+                            >
+                                Ingrédients
+                            </h3>
+                            <ul
+                                class="grid justify-between grid-cols-2 gap-x-2.5 gap-y-5"
+                            >
+                                <li class="flex flex-col">
+                                    <h4
+                                        class="text-sm text-brand-black font-medium"
+                                    >
+                                        Lait de coco
+                                    </h4>
+                                    <p class="text-sm text-brand-dkgray">
+                                        400ml
+                                    </p>
+                                </li>
+                                <li class="flex flex-col">
+                                    <h4
+                                        class="text-sm text-brand-black font-medium"
+                                    >
+                                        Lait de coco
+                                    </h4>
+                                    <p class="text-sm text-brand-dkgray">
+                                        400ml
+                                    </p>
+                                </li>
+                                <li class="flex flex-col">
+                                    <h4
+                                        class="text-sm text-brand-black font-medium"
+                                    >
+                                        Lait de coco
+                                    </h4>
+                                    <p class="text-sm text-brand-dkgray">
+                                        400ml
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </main>
     </body>
+    <script defer type="module" src="./javascript/index.js"></script>
 </html>
