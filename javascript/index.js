@@ -1,9 +1,11 @@
 //Imports
-import componentTypes from "./components/index.js";
+import { cardList } from "./components.js";
+import recipes from "./data/recipes.js";
+import displayResultCount from "./display/displayResultCount.js";
+import getRecipeCardDom from "./display/getRecipeCardDom.js";
 
-//Renders every component
-for (var i = 0; i < componentTypes.length; i++) {
-    componentTypes[i]();
+//Display
+for (let recipe of recipes) {
+    cardList.appendChild(getRecipeCardDom(recipe));
 }
-
-let filterOpened = -1;
+displayResultCount(recipes.length);
