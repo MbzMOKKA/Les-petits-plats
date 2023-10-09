@@ -77,6 +77,9 @@
                     border-bottom-left-radius: 0;
                     border-bottom-right-radius: 0;
                 }
+                #no-result-msg[visible="false"] {
+                    display: none;
+                }
             }
             @layer utilities {
             }
@@ -109,6 +112,7 @@
                     class="bg-white w-2/3 px-2.5 py-2.5 flex flex-row rounded-xl"
                 >
                     <input
+                        id="main-search"
                         type="search"
                         class="text-brand-dkgray grow mx-1 px-2 text-base"
                         placeholder="Rechercher une recette, un ingrédient, ..."
@@ -165,9 +169,7 @@
                     <p
                         id="result-count"
                         class="text-brand-black font-anton text-xl"
-                    >
-                        1500 recettes
-                    </p>
+                    ></p>
                 </div>
                 <!-- FILTERS APPLIED -->
                 <ul class="flex flex-row list-none mt-5 mb-10">
@@ -201,83 +203,12 @@
             <ul
                 id="card-list"
                 class="grid justify-center grid-cols-[repeat(auto-fill,380px)] gap-x-12 gap-y-16"
-            >
-                <!-- CARD -->
-                <!-- <li class="shadow-card rounded-[20px] overflow-hidden">
-                    <div class="relative">
-                        <img
-                            src="./images/thumbnail/Recette01.jpg"
-                            alt="Example Image"
-                            loading="lazy"
-                            class="w-full h-[253px] object-cover"
-                        />
-                        <p
-                            class="absolute right-[22px] top-[21px] bg-brand-yellow rounded-full px-[15px] py-[5px] text-xs text-brand-black"
-                        >
-                            10min
-                        </p>
-                    </div>
-                    <div class="pt-[32px] px-[25px] pb-[60px]">
-                        <h2 class="text-lg font-anton mb-[28px]">
-                            Limonade de Coco
-                        </h2>
-                        <div class="mb-[35px]">
-                            <h3
-                                class="mb-[15px] text-brand-dkgray text-xs uppercase font-bold tracking-[1.08px]"
-                            >
-                                Recette
-                            </h3>
-                            <p class="text-brand-black text-sm">
-                                Mettre les glaçons à votre goût dans le blender,
-                                Ajouter le lait la crème de coco, le jus de 2
-                                citrons et le sucre ensemble. Mixer jusqu'à
-                                obtenir la consistance désirée.
-                            </p>
-                        </div>
-                        <div>
-                            <h3
-                                class="mb-[15px] text-brand-dkgray text-xs uppercase font-bold tracking-[1.08px]"
-                            >
-                                Ingrédients
-                            </h3>
-                            <ul
-                                class="grid justify-between grid-cols-2 gap-x-2.5 gap-y-5"
-                            >
-                                <li class="flex flex-col">
-                                    <h4
-                                        class="text-sm text-brand-black font-medium"
-                                    >
-                                        Lait de coco
-                                    </h4>
-                                    <p class="text-sm text-brand-dkgray">
-                                        400ml
-                                    </p>
-                                </li>
-                                <li class="flex flex-col">
-                                    <h4
-                                        class="text-sm text-brand-black font-medium"
-                                    >
-                                        Lait de coco
-                                    </h4>
-                                    <p class="text-sm text-brand-dkgray">
-                                        400ml
-                                    </p>
-                                </li>
-                                <li class="flex flex-col">
-                                    <h4
-                                        class="text-sm text-brand-black font-medium"
-                                    >
-                                        Lait de coco
-                                    </h4>
-                                    <p class="text-sm text-brand-dkgray">
-                                        400ml
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li> -->
-            </ul>
+            ></ul>
+            <p id="no-result-msg" class="text-lg mx-auto text-center my-16">
+                Aucune recette ne correspond à votre critère...
+                <br />
+                Vous pouvez essayer « salade », « lait de coco », etc...
+            </p>
         </main>
     </body>
     <script defer type="module" src="./javascript/index.js"></script>

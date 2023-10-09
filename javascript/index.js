@@ -1,11 +1,15 @@
 //Imports
-import { cardList } from "./components.js";
-import recipes from "./data/recipes.js";
-import displayResultCount from "./display/displayResultCount.js";
-import getRecipeCardDom from "./display/getRecipeCardDom.js";
+import { mainSearchBar } from "./components.js";
+import refreshResults from "./search/refreshResults.js";
 
-//Display
-for (let recipe of recipes) {
-    cardList.appendChild(getRecipeCardDom(recipe));
-}
-displayResultCount(recipes.length);
+//Initialisation
+let searchQuery = "";
+
+//Adding an event listener to the main search bar so the results are refreshed when its value changes
+mainSearchBar.addEventListener("input", (e) => {
+    searchQuery = e.target.value;
+    refreshResults(searchQuery);
+});
+
+//Getting the initial results
+refreshResults(searchQuery);
