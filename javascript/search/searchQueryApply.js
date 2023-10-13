@@ -1,7 +1,5 @@
-//Utils
-function checkIfInfoIsSearched(infoValue, searchQuery) {
-    return infoValue.toLowerCase().includes(searchQuery.toLowerCase());
-}
+//Imports
+import { checkIfInfoIsSearched } from "../utils/common.js";
 
 //Exports
 export default function searchQueryApply(results, searchQuery) {

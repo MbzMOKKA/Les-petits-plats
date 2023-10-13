@@ -80,6 +80,9 @@
                 #no-result-msg[visible="false"] {
                     display: none;
                 }
+                .text-pascalcase::first-letter {
+                    text-transform: uppercase;
+                }
             }
             @layer utilities {
             }
@@ -104,8 +107,8 @@
                 class="absolute left-0 top-0 right-0 bottom-0 flex flex-col justify-center items-center"
             >
                 <h1 class="text-brand-yellow text-center w-1/2 mb-8">
-                    Cherchez parmi plus de 1500 recettes du quotidien, simples
-                    et délicieuses
+                    Cherchez parmi plus de 50 recettes du quotidien, simples et
+                    délicieuses
                 </h1>
                 <!-- SEARCH BAR -->
                 <div
@@ -137,18 +140,20 @@
                     <!-- BUTTONS -->
                     <div class="flex flex-row items-center">
                         <div class="filter" expanded="false">
-                            <button>
+                            <button id="filter-ingredient">
                                 <p>Ingrédients</p>
                                 <img
+                                    class="chevron"
                                     src="./images/icon/chevron-down.svg"
                                     alt="Icône"
                                 />
                             </button>
                         </div>
                         <div class="filter" expanded="false">
-                            <button>
+                            <button id="filter-appliance">
                                 <p>Appareils</p>
                                 <img
+                                    class="chevron"
                                     src="./images/icon/chevron-down.svg"
                                     alt="Icône"
                                 />
@@ -156,9 +161,10 @@
                             <!-- EXPANSION HERE -->
                         </div>
                         <div class="filter" expanded="false">
-                            <button>
+                            <button id="filter-ustensil">
                                 <p>Ustensiles</p>
                                 <img
+                                    class="chevron"
                                     src="./images/icon/chevron-down.svg"
                                     alt="Icône"
                                 />
@@ -173,7 +179,7 @@
                 </div>
                 <!-- FILTERS APPLIED -->
                 <ul class="flex flex-row list-none mt-5 mb-10">
-                    <li class="mr-6">
+                    <!-- <li class="mr-6">
                         <button
                             class="flex flex-row justify-between items-center bg-brand-yellow text-sm rounded-xl p-4 hover:shadow-xl"
                         >
@@ -184,19 +190,7 @@
                                 class="ml-8"
                             />
                         </button>
-                    </li>
-                    <li class="mr-6">
-                        <button
-                            class="flex flex-row justify-between items-center bg-brand-yellow text-sm rounded-xl p-4 hover:shadow-xl"
-                        >
-                            Crème de coco
-                            <img
-                                src="./images/icon/cross.svg"
-                                alt="Icône"
-                                class="ml-8"
-                            />
-                        </button>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- RESULTS -->
