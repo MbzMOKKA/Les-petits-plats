@@ -9,3 +9,4 @@ export const buttonFilterAppliance =
     document.getElementById("filter-appliance");
 export const buttonFilterUstensil = document.getElementById("filter-ustensil");
 export const filters = document.getElementsByClassName("filter");
+export const filtersApplied = document.getElementById("filters-applied");

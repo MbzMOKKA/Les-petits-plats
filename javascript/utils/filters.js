@@ -1,16 +1,21 @@
 //Imports
+import { filtersApplied } from "../components.js";
+import generateFilterOptionListsContent from "../dom/generateFilterOptionListsContent.js";
+import getFilterAppliedDom from "../dom/getFilterAppliedDom.js";
+import { state } from "../index.js";
+import refreshResults from "../search/refreshResults.js";
 import toggleFilterExpansion from "../search/toggleFilterExpansion.js";
-import { checkIfInfoIsSearched } from "./common.js";
+import { checkIfInfoIsSearched, emptyDomList } from "./common.js";
 
 //Exports
-export function addEventListenerToFilter(button, state) {
+export function filterAddClickListener(button) {
     const id = button.getAttribute("id");
     button.addEventListener("click", () => {
-        toggleFilterExpansion(button.parentNode, id, state);
+        toggleFilterExpansion(button.parentNode, id);
     });
     for (let child of button.childNodes) {
         child.addEventListener("click", (e) => {
-            toggleFilterExpansion(button.parentNode, id, state);
+            toggleFilterExpansion(button.parentNode, id);
             e.stopPropagation();
         });
     }
@@ -40,20 +45,46 @@ export function addUstensilsName(filtersName, result) {
     }
 }
 
-export function isIngredientSelected(filters, filterName) {
-    return filters.ingredients.includes(filterName);
-}
-
-export function isApplianceSelected(filters, filterName) {
-    return filters.appliances.includes(filterName);
-}
-
-export function isUstensilSelected(filters, filterName) {
-    return filters.ustensils.includes(filterName);
-}
-
-export function filtersSearchQueryApply(filtersNameSet, filterSearchQuery) {
+export function filtersSearchQueryApply(filtersNameSet) {
+    const filterSearchQuery = state.filterSearchQuery;
     return Array.from(filtersNameSet).filter((filterName) => {
         return checkIfInfoIsSearched(filterName, filterSearchQuery);
     });
+}
+
+export function addFilter(filtersSelected, filterName) {
+    filtersSelected.push(filterName);
+    const tagDom = getFilterAppliedDom(filtersSelected, filterName);
+    filtersApplied.appendChild(tagDom);
+    refreshResults();
+    refreshFilterOptionLists();
+}
+
+export function removeFilter(filtersSelected, filterName) {
+    const index = filtersSelected.findIndex((elem) => elem === filterName);
+    filtersSelected.splice(index, 1);
+    for (let filterApplied of filtersApplied.childNodes) {
+        if (filterApplied.getAttribute("value") === filterName) {
+            filtersApplied.removeChild(filterApplied);
+            break;
+        }
+    }
+    refreshResults();
+    refreshFilterOptionLists();
+}
+
+export function refreshFilterOptionLists() {
+    const { selectedList, unselectedList } = getFilterOptionListsDom();
+    if (selectedList == null || unselectedList == null) {
+        return; //no need to continue if the button expansion is closed
+    }
+    emptyDomList(selectedList);
+    emptyDomList(unselectedList);
+    generateFilterOptionListsContent();
+}
+
+export function getFilterOptionListsDom() {
+    const selectedList = document.getElementById("filters-selected");
+    const unselectedList = document.getElementById("filters-unselected");
+    return { selectedList, unselectedList };
 }

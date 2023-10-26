@@ -178,31 +178,17 @@
                     ></p>
                 </div>
                 <!-- FILTERS APPLIED -->
-                <ul class="flex flex-row list-none mt-5 mb-10">
-                    <!-- <li class="mr-6">
-                        <button
-                            class="flex flex-row justify-between items-center bg-brand-yellow text-sm rounded-xl p-4 hover:shadow-xl"
-                        >
-                            Crème de coco
-                            <img
-                                src="./images/icon/cross.svg"
-                                alt="Icône"
-                                class="ml-8"
-                            />
-                        </button>
-                    </li> -->
-                </ul>
+                <ul
+                    id="filters-applied"
+                    class="flex flex-row flex-wrap list-none mt-5 mb-10 gap-y-4"
+                ></ul>
             </div>
             <!-- RESULTS -->
             <ul
                 id="card-list"
                 class="grid justify-center grid-cols-[repeat(auto-fill,380px)] gap-x-12 gap-y-16"
             ></ul>
-            <p id="no-result-msg" class="text-lg mx-auto text-center my-16">
-                Aucune recette ne correspond à votre critère...
-                <br />
-                Vous pouvez essayer « salade », « lait de coco », etc...
-            </p>
+            <p id="no-result-msg" class="text-lg mx-auto text-center my-16"></p>
         </main>
     </body>
     <script defer type="module" src="./javascript/index.js"></script>

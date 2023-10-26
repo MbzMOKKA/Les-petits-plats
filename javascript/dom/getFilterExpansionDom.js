@@ -1,74 +1,9 @@
 //Imports
-import { emptyList } from "../utils/common.js";
-import {
-    addIngredientsName,
-    addAppliancesName,
-    addUstensilsName,
-    isIngredientSelected,
-    isApplianceSelected,
-    isUstensilSelected,
-    filtersSearchQueryApply,
-} from "../utils/filters.js";
-
-//Imports
-function generateListContent(
-    filterSearchQuery,
-    id,
-    state,
-    selectedList,
-    unselectedList
-) {
-    //finding the right data
-    let addFiltersName;
-    let checkIfSelected;
-    switch (id) {
-        case "filter-ingredient":
-            addFiltersName = addIngredientsName;
-            checkIfSelected = isIngredientSelected;
-            break;
-        case "filter-appliance":
-            addFiltersName = addAppliancesName;
-            checkIfSelected = isApplianceSelected;
-            break;
-        case "filter-ustensil":
-            addFiltersName = addUstensilsName;
-            checkIfSelected = isUstensilSelected;
-            break;
-    }
-    const filtersNameSet = new Set();
-    for (let result of state.results) {
-        addFiltersName(filtersNameSet, result);
-    }
-    //removing the unsearched filters
-    const filtersName = filtersSearchQueryApply(
-        filtersNameSet,
-        filterSearchQuery
-    );
-    //adding the filters to the dom
-    for (let filterName of filtersName) {
-        const listElement = document.createElement("li");
-        if (checkIfSelected(state.filters, filterName)) {
-            //selected filters
-            selectedList.appendChild(listElement);
-            listElement.setAttribute(
-                "class",
-                "flex justify-between px-3 py-1 bg-brand-yellow hover:text-brand-yellow hover:bg-brand-black hover:cursor-pointer"
-            );
-            listElement.innerHTML = `<p class="text-pascalcase font-bold">${filterName}</p><img src="./images/icon/remove.svg" alt="Retirer" class="ml-2"/>`;
-        } else {
-            //unselected filters
-            unselectedList.appendChild(listElement);
-            listElement.setAttribute(
-                "class",
-                "text-pascalcase px-3 py-1 hover:bg-brand-yellow hover:cursor-pointer"
-            );
-            listElement.innerHTML = filterName;
-        }
-    }
-}
+import { state } from "../index.js";
+import { refreshFilterOptionLists } from "../utils/filters.js";
 
 //Exports
-export default function getFilterExpansionDom(id, state) {
+export default function getFilterExpansionDom() {
     const expansion = document.createElement("section");
     expansion.setAttribute("id", "filter-expansion");
     expansion.setAttribute(
@@ -93,15 +28,8 @@ export default function getFilterExpansionDom(id, state) {
         "w-full text-brand-dkgray grow p-1 text-sm mr-1"
     );
     searchInput.addEventListener("input", (e) => {
-        emptyList(selectedList);
-        emptyList(unselectedList);
-        generateListContent(
-            e.target.value,
-            id,
-            state,
-            selectedList,
-            unselectedList
-        );
+        state.filterSearchQuery = e.target.value;
+        refreshFilterOptionLists();
     });
 
     const searchIcon = document.createElement("img");
@@ -118,12 +46,12 @@ export default function getFilterExpansionDom(id, state) {
     const selectedList = document.createElement("ul");
     listsContainer.appendChild(selectedList);
     selectedList.setAttribute("class", "selected-options mt-3");
+    selectedList.setAttribute("id", "filters-selected");
 
     const unselectedList = document.createElement("ul");
     listsContainer.appendChild(unselectedList);
     unselectedList.setAttribute("class", "unselected-options mt-3");
-
-    generateListContent("", id, state, selectedList, unselectedList);
+    unselectedList.setAttribute("id", "filters-unselected");
 
     return expansion;
 }

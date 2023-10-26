@@ -1,5 +1,5 @@
 //Exports
-export function emptyList(list) {
+export function emptyDomList(list) {
     while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
