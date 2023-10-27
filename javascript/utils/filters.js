@@ -1,5 +1,5 @@
 //Imports
-import { filtersApplied } from "../components.js";
+import { filtersApplied, filterOptionLists } from "../utils/components.js";
 import generateFilterOptionListsContent from "../dom/generateFilterOptionListsContent.js";
 import getFilterAppliedDom from "../dom/getFilterAppliedDom.js";
 import { state } from "../index.js";
@@ -74,17 +74,12 @@ export function removeFilter(filtersSelected, filterName) {
 }
 
 export function refreshFilterOptionLists() {
-    const { selectedList, unselectedList } = getFilterOptionListsDom();
-    if (selectedList == null || unselectedList == null) {
-        return; //no need to continue if the button expansion is closed
+    const { selectedList, unselectedList } = filterOptionLists();
+    if (state.filterSelectedId == null) {
+        //no need to continue if the button expansion is closed
+        return;
     }
     emptyDomList(selectedList);
     emptyDomList(unselectedList);
     generateFilterOptionListsContent();
-}
-
-export function getFilterOptionListsDom() {
-    const selectedList = document.getElementById("filters-selected");
-    const unselectedList = document.getElementById("filters-unselected");
-    return { selectedList, unselectedList };
 }

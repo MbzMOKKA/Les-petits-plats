@@ -10,3 +10,8 @@ export const buttonFilterAppliance =
 export const buttonFilterUstensil = document.getElementById("filter-ustensil");
 export const filters = document.getElementsByClassName("filter");
 export const filtersApplied = document.getElementById("filters-applied");
+export function filterOptionLists() {
+    const selectedList = document.getElementById("filters-selected");
+    const unselectedList = document.getElementById("filters-unselected");
+    return { selectedList, unselectedList };
+}

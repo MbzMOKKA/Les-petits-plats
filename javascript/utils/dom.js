@@ -1,5 +1,5 @@
 //Imports
-import { cardList, resultCount } from "../components.js";
+import { cardList, resultCount } from "../utils/components.js";
 import getRecipeCardDom from "../dom/getRecipeCardDom.js";
 
 //Exports

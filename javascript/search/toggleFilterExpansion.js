@@ -1,5 +1,5 @@
 //Imports
-import { filters } from "../components.js";
+import { filters } from "../utils/components.js";
 import generateFilterOptionListsContent from "../dom/generateFilterOptionListsContent.js";
 import getFilterExpansionDom from "../dom/getFilterExpansionDom.js";
 import { state } from "../index.js";
@@ -8,6 +8,7 @@ import { filterIsExpanded, filterSetExpanded } from "../utils/filters.js";
 
 //Exports
 export default function toggleFilterExpansion(clickedComponent, id) {
+    state.filterSearchQuery = "";
     for (let filter of filters) {
         const isTheFilterClicked = filter == clickedComponent;
         if (isTheFilterClicked) {

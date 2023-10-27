@@ -1,5 +1,6 @@
 //Imports
 import { state } from "../index.js";
+import { filterOptionLists } from "../utils/components.js";
 import {
     addIngredientsName,
     addAppliancesName,
@@ -7,12 +8,11 @@ import {
     filtersSearchQueryApply,
     removeFilter,
     addFilter,
-    getFilterOptionListsDom,
 } from "../utils/filters.js";
 
 //Exports
 export default function generateFilterOptionListsContent() {
-    const { selectedList, unselectedList } = getFilterOptionListsDom();
+    const { selectedList, unselectedList } = filterOptionLists();
     //finding the right data
     let addFiltersName;
     let filtersSelected;

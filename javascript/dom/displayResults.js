@@ -1,5 +1,5 @@
 //Imports
-import { cardList, noResultMessage } from "../components.js";
+import { cardList, noResultMessage } from "../utils/components.js";
 import { state } from "../index.js";
 import { emptyDomList } from "../utils/common.js";
 import { fillResultList, displayResultCount } from "../utils/dom.js";

@@ -4,7 +4,7 @@ import {
     buttonFilterIngredient,
     buttonFilterUstensil,
     mainSearchBar,
-} from "./components.js";
+} from "./utils/components.js";
 import refreshResults from "./search/refreshResults.js";
 import { filterAddClickListener } from "./utils/filters.js";
 
