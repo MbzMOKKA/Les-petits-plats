@@ -22,11 +22,11 @@ export function filterAddClickListener(button) {
 }
 
 export function filterIsExpanded(component) {
-    return component.getAttribute("expanded") === "false" ? false : true;
+    return component.getAttribute("data-expanded") === "false" ? false : true;
 }
 
 export function filterSetExpanded(component, value) {
-    component.setAttribute("expanded", value);
+    component.setAttribute("data-expanded", value);
 }
 
 export function addIngredientsName(filtersName, result) {

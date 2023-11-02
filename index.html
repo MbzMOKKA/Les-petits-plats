@@ -67,17 +67,17 @@
                     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
                         0 8px 10px -6px rgb(0 0 0 / 0.1);
                 }
-                .filter button p {
+                .filter button span {
                     color: #1b1b1b;
                     font-size: 16px;
                     font-weight: 500;
                     margin-right: 63px;
                 }
-                .filter[expanded="true"] button {
+                .filter[data-expanded="true"] button {
                     border-bottom-left-radius: 0;
                     border-bottom-right-radius: 0;
                 }
-                #no-result-msg[visible="false"] {
+                #no-result-msg[data-visible="false"] {
                     display: none;
                 }
                 .text-pascalcase::first-letter {
@@ -139,9 +139,9 @@
                 <div class="flex flex-row justify-between items-center">
                     <!-- BUTTONS -->
                     <div class="flex flex-row items-center">
-                        <div class="filter" expanded="false">
+                        <div class="filter" data-expanded="false">
                             <button id="filter-ingredient">
-                                <p>Ingrédients</p>
+                                <span>Ingrédients</span>
                                 <img
                                     class="chevron"
                                     src="./images/icon/chevron-down.svg"
@@ -149,9 +149,9 @@
                                 />
                             </button>
                         </div>
-                        <div class="filter" expanded="false">
+                        <div class="filter" data-expanded="false">
                             <button id="filter-appliance">
-                                <p>Appareils</p>
+                                <span>Appareils</span>
                                 <img
                                     class="chevron"
                                     src="./images/icon/chevron-down.svg"
@@ -160,9 +160,9 @@
                             </button>
                             <!-- EXPANSION HERE -->
                         </div>
-                        <div class="filter" expanded="false">
+                        <div class="filter" data-expanded="false">
                             <button id="filter-ustensil">
-                                <p>Ustensiles</p>
+                                <span>Ustensiles</span>
                                 <img
                                     class="chevron"
                                     src="./images/icon/chevron-down.svg"
@@ -190,6 +190,6 @@
             ></ul>
             <p id="no-result-msg" class="text-lg mx-auto text-center my-16"></p>
         </main>
+        <script type="module" src="./javascript/index.js"></script>
     </body>
-    <script defer type="module" src="./javascript/index.js"></script>
 </html>
