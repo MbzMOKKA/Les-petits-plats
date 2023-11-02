@@ -25,6 +25,7 @@ export default function searchQueryApply(results, searchQuery) {
                         )
                     ) {
                         validRecipes.push(recipe);
+                        break;
                     }
                 }
             }
